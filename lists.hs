@@ -22,3 +22,20 @@ kth (x:xs) 1 = x
 kth (_:xs) n
   | n < 1 = error "Index out of bounds"
   | otherwise = kth xs (pred n)
+
+-- P04 (*) Find the number of elements of a list.
+size :: [a] -> Int
+size x = size' x 0
+
+size' :: [a] -> Int -> Int
+size' [] n = n
+size' (x:xs) n = size' xs (succ n)
+
+-- P05 (*) Reverse a list.
+reverse' :: [a] -> [a]
+reverse' x = reverse'' x []
+
+reverse'' :: [a] -> [a] -> [a]
+reverse'' [] xs = xs
+reverse'' (x:xs) xss = reverse'' xs (x:xss)
+
