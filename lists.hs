@@ -6,12 +6,12 @@ lastElem (_:xs) = lastElem xs
 
 
 -- P02 (*) Find the last but one element of a list.
-penultimate :: [a] -> a
-penultimate [] = error "Empty list"
-penultimate [_] = error "Only one element"
-penultimate [x, _] = x
-penultimate [_, x, _] = x
-penultimate (_:xs) = penultimate xs
+butLast :: [a] -> a
+butLast [] = error "Empty list"
+butLast [_] = error "Only one element"
+butLast [x, _] = x
+butLast [_, x, _] = x
+butLast (_:xs) = butLast xs
 
 
 -- P03 (*) Find the K'th element of a list.
@@ -35,3 +35,6 @@ reversed x = reversed' x [] where
     reversed' [] xs = xs
     reversed' (x:xs) xss = reversed' xs (x:xss)
 
+-- P06 (*) Find out whether a list is a palindrome.
+isPalindrome :: Eq a => [a] -> Bool
+isPalindrome xs = xs == (reversed xs)
