@@ -38,3 +38,11 @@ reversed x = reversed' x [] where
 -- P06 (*) Find out whether a list is a palindrome.
 isPalindrome :: Eq a => [a] -> Bool
 isPalindrome xs = xs == (reversed xs)
+
+
+-- P07 (**) Flatten a nested list structure.
+data MaybeNested a = Elem a | List [MaybeNested a]
+
+flatten :: MaybeNested a -> [a]
+flatten (Elem x) = [x]
+flatten (List x) = concatMap flatten x
